@@ -1,0 +1,145 @@
+#Fast APIS in Python
+
+->FastAPI is a Python framework used to build APIs (Application Programming Interfaces) quickly and easily.
+->It helps you connect your Python code with the outside world (like web or mobile apps).
+
+-> FastAPI is a Python tool that helps you create web APIs very fast, easy, and with fewer lines of code.
+
+⚙️ Basic Details (in Simple Words):
+Feature	Explanation
+🚀 Fast   	          :-   It is one of the fastest Python frameworks (as fast as Node.js and Go).
+🧑‍💻 Easy to use   	 :-   You can create APIs with just a few lines of code.
+📜 Automatic Docs     :-   It automatically creates API documentation for you (Swagger UI).
+🧩 Type hints support :-   Uses Python type hints to check data and make coding easier.
+🔒 Data validation    :-   Automatically checks that your input data is correct.
+🐍 Built on Python    :-    Uses modern Python features (like async and await) for speed.
+
+->Intall Librarys:-
+-> We need to install the Main 3 Librarys:
+    (1) fastapi
+    (2) uvicorn
+    (3) pydentic
+-> This 3 Librarys is used into this FastAPI
+
+-> We have a Total 4 Methods of the Http servers;
+        Verbs             Explanation
+    (1) get :- when we need To Retrive a data from the website that time we are use this verb.
+    (2) post :- to create something into our website like we are add some data into the website that time we rae use this verb.
+    (3) put :- when we need to edit something that time we are use this put verb.
+    (4) delete:- when we need to delete something that time we are use this verb.
+
+-> This 4 verbs is work like the CRUID Operation.
+
+
+#Path Parameter into the Fast APIs
+
+-> When we need to retrive the data of the perticular customers/employees/student or
+   any thing that time we are use this Path Parameters.
+
+#Path() Function
+
+->Path Function inside the Function Parameter.
+-> We are enhence the Redability of the Endpoint in the /docs view.
+
+
+#HTTP Status Code
+-> Whenever client is sent the request to the server then the server is give the response to you request with the Status code.
+->This Status code is show the request is succesfull or note like that.
+
+Status Code     Explanation
+
+->2xx       :-  Success        -> The request is succesfuly recived and preoced.
+->3xx       :-  Redirection    -> Further action need to be taken.
+->4xx       :-  Client Error   -> Somethinf is wron with the request from the client.
+->5xx       :-  Server Error   -> Something went wrong on the server.
+
+-> Let see some Different Different Error of the server.
+
+Code------Movement------------------------------Description-------------------------------------------
+
+200         OK              ->Standard success                 ->A GET OF POST succeeded
+201       Created           ->Resource created                 ->After a POST that creates something
+204      No Content         ->Success, but no data returned    ->After a DELETE request
+400     Bad Request         ->Malformed or invalid request     ->Missing field, wrong data type
+401     Unauthorized        ->No/invalid authentication        ->Login required
+403      Forbidden          ->Authenticated, but no permission ->Logged in but not allowed
+404      Not Found          ->Resource doesn't exist            ->Patient ID not in DB
+500   Internal Server Error ->Generic failure                   ->Something broke on the server
+502     Bad Gateway         ->Gateway (like Nginx)              ->failed to reach backend  
+503  Service Unavailable    ->Server is down or overloaded
+
+
+#HTTP Extention
+-> It is a special Builtin Exception in FastAPI.
+-> It is use to return Custom HTTP error responses when something goes wrong in your APIs.
+-> We are able to set a Proper HTTP error code(eg. 404,403,500).
+-> We are Display the custome error message.
+
+#Query Parameter
+->This Query Parameter is use for the Filter the data directly from the URL.
+-> Query parameters in FastAPI are the values added to the URL after a question mark (?) to send extra information to the server. They are mainly used for filtering, searching, or sorting data.
+
+->Query parameters are not part of the main URL path but are optional details that modify the API response. Each parameter is written as a key-value pair, and multiple parameters are separated by an ampersand (&).
+
+-> Let see one Example of this.
+Ex. /patient?city=Delhi&sort_by=age
+
+
+# What is the Path,Query and Annoted into the Pydentic
+
+->Path :- When we need to add some values into the browser url that time we are use this Path KeyWord from Pydentic.
+
+->Query :- Query tab use hota hai jab tumhe filter, sort, ya search karna hota hai.Ye optional ya configurable parameters hote hain.
+
+->Annotated:- Annotated ek Python 3.9+ feature hai jisko FastAPI ne adopt kiya hai taaki Path, Query, Body, Header, etc. ko more readable aur reusable banaya ja sake.
+
+#POST End Point into the FastAPIs.
+🔹 1. What is a POST Request?
+-> POST request ka use new data create karne ke liye hota hai.
+-> Ye data server ke database ya file me save hota hai.
+-> POST request ka data body ke through bheja jata hai (URL me nahi).
+
+Example use case:
+New user registration
+Adding a new product
+Creating a new patient record (like in your code)
+
+
+---------Question-----------------------------------Short Answer-----------------------------------------------------
+What is POST request used for?	   -         To create new data on the server.
+Where is POST data sent?	       -        Inside the body of the request.
+Why use BaseModel in POST?	       -        For validation and type-checking of input data.
+What is status code 201?	       -        Resource successfully created.
+What if same ID already exists?    -       	Returns HTTP 400 Bad Request.
+
+----------------------------------------------------------------------------------------------------------------
+Remaining Topics
+
+(1) Response Models (response_model)
+(2) File Upload (UploadFile / File)
+(3) Static File Serving
+(4) Request Body + Path + Query mix
+(5) Basic Dependencies (Depends)
+(6) Environment Variables (.env)
+(7) Routers (Project organization)
+(8) SQLite Database with SQLModel / SQLAlchemy (basic CRUD)
+(9) Custom Error Handling
+(10) Project Folder Structure
+
+----------------------------------------------------------------------------------------------------------------
+
+(1) Response Models (response_model)
+-> Some time the user need to view the some perticular data not all the data so that time this response model is working.
+-> if there is any extra data is there into our data so hide/clean or formate it.
+-> So then the user gets a clean and safe output.
+-> it is a Pydentic Modle concepts.
+
+-> Ex.
+    -> if we have a user data like ;
+        (1) password
+        (2) internal ID
+        (3) Salary
+        (4) Email
+    -> now we dont need to show the Password of the Account so we are telling this thing to the Fast Apis show only the Id and Email ID, Dont show the Passwod.
+-> Its help in the Security Purpose.
+
