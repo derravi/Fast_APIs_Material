@@ -1,0 +1,72 @@
+{
+    "S003": {
+        "name": "Amit",
+        "maths": 45,
+        "science": 50,
+        "english": 48,
+        "percentage": 47.67,
+        "result": "Pass"
+    },
+    "S004": {
+        "name": "Pooja",
+        "maths": 92,
+        "science": 89,
+        "english": 95,
+        "percentage": 92.0,
+        "result": "Pass"
+    },
+    "S005": {
+        "name": "Karan",
+        "maths": 33,
+        "science": 40,
+        "english": 38,
+        "percentage": 37.0,
+        "result": "Pass"
+    },
+    "S006": {
+        "name": "Neha",
+        "maths": 70,
+        "science": 68,
+        "english": 72,
+        "percentage": 70.0,
+        "result": "Pass"
+    },
+    "S007": {
+        "name": "Sahil",
+        "maths": 85,
+        "science": 80,
+        "english": 78,
+        "percentage": 81.0,
+        "result": "Pass"
+    },
+    "S008": {
+        "name": "Anjali",
+        "maths": 90,
+        "science": 92,
+        "english": 88,
+        "percentage": 90.0,
+        "result": "Pass"
+    },
+    "S009": {
+        "name": "Rahul",
+        "maths": 60,
+        "science": 55,
+        "english": 58,
+        "percentage": 57.67,
+        "result": "Pass"
+    },
+    "S010": {
+        "name": "Sneha",
+        "maths": 76,
+        "science": 74,
+        "english": 79,
+        "percentage": 76.33,
+        "result": "Pass"
+    },
+    "S011": {
+        "name": "Ravi Kumar",
+        "maths": 22.0,
+        "science": 21.0,
+        "english": 20.0
+    }
+}
