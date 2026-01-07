@@ -63,10 +63,12 @@
         "percentage": 76.33,
         "result": "Pass"
     },
-    "S011": {
-        "name": "Ravi Kumar",
-        "maths": 22.0,
-        "science": 21.0,
-        "english": 20.0
+    "S001": {
+        "name": "Vasurbhai Der",
+        "maths": 82.0,
+        "science": 12.0,
+        "english": 35.0,
+        "percentage": 43.0,
+        "result": "Pass"
     }
 }

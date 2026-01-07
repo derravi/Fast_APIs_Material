@@ -83,33 +83,44 @@ class student_duplicate(BaseModel):
     english:Annotated[Optional[float],Field(default=None)]
 
 @app.post("/update_data/{student_id}")
-def update_student(student_id:str,student_dummy_model:student_duplicate):
+def update_student(student_id: str, student_dummy_model: student_duplicate):
 
+    # Load existing JSON data
     data = load_data()
 
+    # Check student exists or not
     if student_id not in data:
         raise HTTPException(status_code=404,detail="Student data is not existed.")
-    
+
+    # Get existing student record
     existing_student_data = data[student_id]
 
-    update_student_data = student_dummy_model.model_dump(exclude_unset=True)
+    # Get only provided fields (PATCH behavior)
+    update_student_data = student_dummy_model.model_dump()
 
-    for key,value in update_student_data.items():
+    # Update existing fields
+    for key, value in update_student_data.items():
         existing_student_data[key] = value
 
-    existing_student_data['student_id'] = student_id
+    # Add student_id back for Pydantic validation
+    existing_student_data["student_id"] = student_id
 
+    # Recreate Pydantic object (recalculates computed fields)
     student_pydantic_object = Student_data(**existing_student_data)
 
-    existing_student_data = student_dummy_model.model_dump(exclude=['student_id'])
+    # Save data INCLUDING computed fields
+    data[student_id] = student_pydantic_object.model_dump(
+        exclude={"student_id"},
+        mode="json"
+    )
 
-    data[student_id] = existing_student_data
-
+    # Write back to JSON file
     save_data(data)
 
-    return JSONResponse(status_code=200,content={
-        "message":"Student data Scuccessfully Updated."
-    })
+    return JSONResponse(
+        status_code=200,
+        content={"message": "Student data Successfully Updated."}
+    )
 
 #Delete Query
 @app.delete("/Delete_student/{student_id}")
