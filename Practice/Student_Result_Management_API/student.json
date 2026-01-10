@@ -1,74 +1,102 @@
 {
-    "S003": {
+    "S001": {
         "name": "Amit",
+        "gmail": "amit.s001@gmail.com",
+        "password": "test@123",
         "maths": 45,
         "science": 50,
         "english": 48,
         "percentage": 47.67,
         "result": "Pass"
     },
-    "S004": {
+    "S002": {
         "name": "Pooja",
+        "gmail": "pooja.s002@gmail.com",
+        "password": "test@123",
         "maths": 92,
         "science": 89,
         "english": 95,
         "percentage": 92.0,
         "result": "Pass"
     },
-    "S005": {
+    "S003": {
         "name": "Karan",
+        "gmail": "karan.s003@gmail.com",
+        "password": "test@123",
         "maths": 33,
         "science": 40,
         "english": 38,
         "percentage": 37.0,
         "result": "Pass"
     },
-    "S006": {
+    "S004": {
         "name": "Neha",
+        "gmail": "neha.s004@gmail.com",
+        "password": "test@123",
         "maths": 70,
         "science": 68,
         "english": 72,
         "percentage": 70.0,
         "result": "Pass"
     },
-    "S007": {
+    "S005": {
         "name": "Sahil",
+        "gmail": "sahil.s005@gmail.com",
+        "password": "test@123",
         "maths": 85,
         "science": 80,
         "english": 78,
         "percentage": 81.0,
         "result": "Pass"
     },
-    "S008": {
+    "S006": {
         "name": "Anjali",
+        "gmail": "anjali.s006@gmail.com",
+        "password": "test@123",
         "maths": 90,
         "science": 92,
         "english": 88,
         "percentage": 90.0,
         "result": "Pass"
     },
-    "S009": {
+    "S007": {
         "name": "Rahul",
+        "gmail": "rahul.s007@gmail.com",
+        "password": "test@123",
         "maths": 60,
         "science": 55,
         "english": 58,
         "percentage": 57.67,
         "result": "Pass"
     },
-    "S010": {
+    "S008": {
         "name": "Sneha",
+        "gmail": "sneha.s008@gmail.com",
+        "password": "test@123",
         "maths": 76,
         "science": 74,
         "english": 79,
         "percentage": 76.33,
         "result": "Pass"
     },
-    "S001": {
-        "name": "Vasurbhai Der",
-        "maths": 82.0,
-        "science": 12.0,
-        "english": 35.0,
-        "percentage": 43.0,
+    "S009": {
+        "name": "Vishal",
+        "gmail": "vishal.s009@gmail.com",
+        "password": "test@123",
+        "maths": 55,
+        "science": 60,
+        "english": 52,
+        "percentage": 55.67,
+        "result": "Pass"
+    },
+    "S010": {
+        "name": "Rina",
+        "gmail": "rina.s010@gmail.com",
+        "password": "test@123",
+        "maths": 88,
+        "science": 84,
+        "english": 86,
+       	"percentage": 86.0,
         "result": "Pass"
     }
 }

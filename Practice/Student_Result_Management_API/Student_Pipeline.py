@@ -1,7 +1,7 @@
 from fastapi import FastAPI,HTTPException
 import json
 from fastapi.responses import JSONResponse
-from typing import Annotated,Optional
+from typing import Annotated,Optional,Dict
 from pydantic import BaseModel,Field
 from pydantic import computed_field
 
@@ -9,10 +9,20 @@ from pydantic import computed_field
 
 class Student_data(BaseModel):
     student_id:Annotated[str,Field(...,description="Enter the Student Id.",examples=["S001"])]
+    gmail:Annotated[str,Field(...,description="Enter the Gmail of the Student.",examples=["ravi123@gmail.com"])]
+    password:Annotated[str,Field(...,description="Enter the Paswword of the student Acoount.",examples=["abcd@123"])]
     name:Annotated[str,Field(...,description="Enter the Student Name:",examples=["Sanjay"])]
-    maths:Annotated[float,Field(...,description="Enter the marks of the Maths subject.",examples=[80.26])]
-    science:Annotated[float,Field(...,description="Enter the marks of the SciencE subject.",examples=[90.26])]
-    english:Annotated[float,Field(...,description="Enter the marks of the English subject.",examples=[69.26])]
+    maths:Annotated[float,Field(...,le=100,description="Enter the marks of the Maths subject.",examples=[80.26])]
+    science:Annotated[float,Field(...,le=100,description="Enter the marks of the SciencE subject.",examples=[90.26])]
+    english:Annotated[float,Field(...,le=100,description="Enter the marks of the English subject.",examples=[69.26])]
+
+class response_Student_data(BaseModel):
+    student_id:Annotated[str,Field(...,description="Enter the Student Id.",examples=["S001"])]
+    gmail:Annotated[str,Field(...,description="Enter the Gmail of the Student.",examples=["ravi123@gmail.com"])]
+    name:Annotated[str,Field(...,description="Enter the Student Name:",examples=["Sanjay"])]
+    maths:Annotated[float,Field(...,le=100,description="Enter the marks of the Maths subject.",examples=[80.26])]
+    science:Annotated[float,Field(...,le=100,description="Enter the marks of the SciencE subject.",examples=[90.26])]
+    english:Annotated[float,Field(...,le=100,description="Enter the marks of the English subject.",examples=[69.26])]
 
     @computed_field()
     @property
@@ -44,12 +54,13 @@ def default():
     return {"message":"This is the Student Result Management Pipeline."}
 
 #See the Data of the Student.
-@app.get("/student_data")
+@app.get("/student_data",response_model=Dict[str, response_Student_data])
 def student_data():
-    return load_data()
+    data = load_data()
+    return data
 
 #See the Specific student details.
-@app.get("/student_data/{student_id}")
+@app.get("/student_data/{student_id}",response_model=response_Student_data)
 def student_details(student_id:str):
     
     data = load_data()
@@ -78,6 +89,7 @@ def add_student(student: Student_data):
 
 class student_duplicate(BaseModel):
     name:Annotated[Optional[str],Field(default=None)]
+    gmail:Annotated[Optional[str],Field(default=None)]
     maths:Annotated[Optional[float],Field(default=None)]
     science:Annotated[Optional[float],Field(default=None)]
     english:Annotated[Optional[float],Field(default=None)]
