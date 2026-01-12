@@ -115,7 +115,7 @@ What if same ID already exists?    -       	Returns HTTP 400 Bad Request.
 ----------------------------------------------------------------------------------------------------------------
 Remaining Topics
 
-(1) Response Models (response_model)
+(1) Response Models (response_model) -> Completed
 (2) File Upload (UploadFile / File)
 (3) Static File Serving
 (4) Request Body + Path + Query mix
@@ -142,4 +142,24 @@ Remaining Topics
         (4) Email
     -> now we dont need to show the Password of the Account so we are telling this thing to the Fast Apis show only the Id and Email ID, Dont show the Passwod.
 -> Its help in the Security Purpose.
+
+(2) File Upload (UploadFile / File)
+-> Into this section we are able to upload the files with the different formates.
+-> We are have a 2 main way to do that.
+    (1) usin File() Function
+        -> Into this we are able to upload the small files into this fastapis.
+        -> Its store the files into the RAM and then Read it.
+        -> This is not use for the uploading a large file.
+        -> Its give work effectively with the small scale files , but not for large files.
+
+    (2) UploadFile() Function
+        -> its read a files into the streaming mode.
+        -> We are able to upload the large file.
+        -> its provide metadata like ; 
+                -filename
+                -content type
+                -file size (indirectly)
+
+-> We need to indtall one Packages for do that into the fastapis.
+    -> pip install python-multipart
 
