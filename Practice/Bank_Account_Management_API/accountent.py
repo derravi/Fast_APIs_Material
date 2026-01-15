@@ -47,18 +47,3 @@ def account_details(account_no:str):
     
     return data[account_no]
 
-@app.post("/add_account")
-def add_account(account:account_details):
-
-    data = load_data()
-
-    if account.account_id in data:
-        raise HTTPException(status_code=400, detail="Data is Existed.")
-    
-    account_data = account.model_dump(exclude={"account_id"})
-
-    data[account.account_id] = account_data
-
-    save_data(data)
-
-    return JSONResponse(status_code=200, content='Data Successfully Added.')
