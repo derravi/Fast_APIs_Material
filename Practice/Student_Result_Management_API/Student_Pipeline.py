@@ -79,6 +79,7 @@ def add_student(student: Student_data):
         raise HTTPException(status_code=400, detail="Student already exists")
 
     data[student.student_id] = student.model_dump(exclude={"student_id"})
+    
     save_data(data)
 
     return {"message": "Student data successfully added"}
