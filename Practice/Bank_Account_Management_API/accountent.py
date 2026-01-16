@@ -51,36 +51,77 @@ def default():
 
 @app.get("/ac_details",response_model=Dict[str,dummy_account_details])
 def ac_details():
-
     data = load_data()
-
     return data
 
 @app.get("/ac_details/{account_no}",response_model=dummy_account_details)
-def account_details(account_no:str):
+def act_details(account_no:str):
+    try:
+        data = load_data()
 
-    data = load_data()
-
-    if account_no not in data:
-        raise HTTPException(status_code=404,detail="Data not Existed")
+        if account_no not in data:
+            raise HTTPException(status_code=404,detail="Data not Existed")
     
-    return data[account_no]
+        return data[account_no]
+    
+    except Exception as e:
+        print(f"Error {e}.")
 
-# @app.post("/add_acount",status_code=201)
-# def add_account(account:account_details):
+@app.post("/create_account")
+def create_account(account:account_details):
+    
+    try:
+        data = load_data()
 
-#     data = load_data()
+        if account.account_id in data:
+            raise HTTPException(status_code=400, detail="Account ID already exists")
 
-#     if account.account_id in data:
-#         raise HTTPException(status_code=400,detail="Account is alredy existed.")
+        data[account.account_id] = account.model_dump(exclude={"account_id"})
 
-#     data[account.account_id] = account.model_dump(exclude={"account_id"})
+        #save Data
+        save_data(data)
 
-#     #save Data
-#     save_data(data)
+        return JSONResponse(status_code=200, content={"message":"Data Succesfully saved."})
+    except Exception as e:
+        print(f"Error {e}.")
 
-#     return JSONResponse(status_code=200,content={"message": "Account created successfully"})
+#Optional EndPoints
+class opational_account_model(BaseModel):
+    name:Annotated[Optional[str],Field(default=None)]
+    balance:Annotated[Optional[float],Field(default=None)]
+    gmail:Annotated[Optional[str],Field(default=None)]
+    password:Annotated[Optional[str],Field(default=None)]
 
+#Update Endpoints
+@app.put("/edit_account/{account_id}")
+def update_acct(account_id:str,edit_acnt:opational_account_model):
+
+    try:
+        data = load_data()
+
+        if account_id not in data:
+            raise HTTPException(status_code=400,detail="Account not existed.")
+        
+        existing_data = data[account_id]
+
+        updated_account = edit_acnt.model_dump(exclude_unset=True)
+
+        for key,values in updated_account.items():
+            existing_data[key] = values
+
+        existing_data["account_id"] = account_id
+
+        pydentic_object = account_details(**existing_data)
+        
+        #to save the data 
+        data[account_id] = pydentic_object.model_dump(exclude={"account_id"})
+
+        save_data(data)
+
+        return JSONResponse(status_code=200, content={"message":"Data Successfully updated."})
+    except Exception as e:
+        print(f"Error {e}.")
+        
 @app.delete("/delete_account/{account_id}")
 def del_account(account_id:str):
 
@@ -96,7 +137,7 @@ def del_account(account_id:str):
 
     try:
         save_data(data)
-    except Exception as e:
+    except Exception as f:
         print(f"Error {f}.")
     
     return JSONResponse(status_code=200,content={"message":"Account data is removed."})
