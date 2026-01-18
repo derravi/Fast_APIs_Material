@@ -163,3 +163,17 @@ Remaining Topics
 -> We need to indtall one Packages for do that into the fastapis.
     -> pip install python-multipart
 
+# Why we need to use async
+->This function can wait without stopping the server.
+->FastAPI is made for high speed + handling many users at the same time.
+
+#  What is Shuttle
+-> Shuttle = Shell utility Module.
+-> It is a built in module in the python.
+-> Its mainly used into the file structure.
+    -> Like copy File, Move file, delete file/folder , make zip file.
+
+# Why we use shutil in FastAPI File Upload?
+-> Because uploaded file in FastAPI is like a file stream(not a normal file saved on disk yet).
+-> So we need to copy that stream into a new file in our system.
+
