@@ -177,3 +177,18 @@ Remaining Topics
 -> Because uploaded file in FastAPI is like a file stream(not a normal file saved on disk yet).
 -> So we need to copy that stream into a new file in our system.
 
+(3) Static File Serving
+-> Static files are pre-built files that don’t change dynamically, such as:
+-> CSS, JavaScript,HTML,Images
+
+# Example Structure
+project/
+│── main.py
+│── static/
+│     ├── style.css
+│     ├── script.js
+│     └── image.png
+
+-> We are import the "Staticfile" funciton from the fastapi.staticfile 
+-> Example:- from fastapi.staticfile import Staticfile
+

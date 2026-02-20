@@ -117,6 +117,7 @@ def deposit_amount(account_id:str,dep_model:deposit_mmodel):
             "Account id":account_id,
             "Current Amount":data[account_id]["balance"]}
 
+
 #Delete Endpoint use for delete the account of the User.
 @app.delete("/delete_account/{account_id}")
 def del_account(account_id:str):
