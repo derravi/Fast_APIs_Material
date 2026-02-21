@@ -192,3 +192,17 @@ project/
 -> We are import the "Staticfile" funciton from the fastapi.staticfile 
 -> Example:- from fastapi.staticfile import Staticfile
 
+#Why Do We Need Static Files?
+-> FastAPI normally returns:JSON responses and API data
+-> But real websites also need: Design (CSS),Frontend behavior (JS),Images
+   So FastAPI must serve static files.
+
+-> Lets see the some details of the static file code 
+    -> from fastapi import FastAPI
+       from fastapi.staticfiles import StaticFiles
+
+       app = FastAPI()
+
+       app.mount("/static", StaticFiles(directory="static"), name="static") 
+-> Access Static Files in Browser
+-> static/style.css
